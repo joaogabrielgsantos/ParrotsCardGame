@@ -82,5 +82,8 @@ body {
     text-align: center;
   }
 
+}
 
+.bloquear-click {
+  pointer-events: none;
 }

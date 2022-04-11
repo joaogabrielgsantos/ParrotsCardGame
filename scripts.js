@@ -82,18 +82,23 @@ function rotacionar(elemento) {
     } else {
         card2 = back.getAttribute("data-valor");
         elementoCard2 = elemento;
+        let cardsWrapper = document.querySelector(".cards-wrapper");
+        cardsWrapper.classList.add("bloquear-click")
     }
 
 }
 
 function analisarCards(elemento) {
-    rotacionar(elemento)
-    if (card1 === card2 && card2 !== null && elementoCard1 !== elementoCard2) {
+    rotacionar(elemento);
+    let cardsWrapper = document.querySelector(".cards-wrapper");   
+    if (card1 === card2 && card2 !== null && elementoCard1 !== elementoCard2) {        
         pontos++
+        cardsWrapper.classList.remove("bloquear-click");
         elementoCard1.onclick = null;
         elementoCard2.onclick = null;
         card1 = null;
         card2 = null;
+        
         
     } if ((card1 !== card2 && card2 !== null) || elementoCard1 === elementoCard2) {
         const e = elementoCard1.querySelectorAll(".rotate")
@@ -113,6 +118,7 @@ function analisarCards(elemento) {
             elementoCard2 = null;
             card1 = null;
             card2 = null;
+            cardsWrapper.classList.remove("bloquear-click");
             
         }
 
@@ -130,7 +136,7 @@ function analisarCards(elemento) {
 function novoJogo (){
     let newGame = prompt("Quer jogar novamente? (sim/não)")
     while(newGame !== "sim" && newGame !== "não"){
-        newGame = prompt("Quer jogar novamente?")
+        newGame = prompt("Quer jogar novamente? (sim/não)")
     }
     if (newGame === "sim"){
         location.reload()
